@@ -13,7 +13,6 @@ function generateRandomSpell() {
         const spell = data[randomIndex];
   
         const spellName = document.getElementById('spell-name');
-        const spellIncantation = document.getElementById('spell-incantation');
         const spellDescription = document.getElementById('spell-description');
         
         spellName.textContent = spell.name;
@@ -27,3 +26,16 @@ function generateRandomSpell() {
   document.getElementById('generate-button').addEventListener('click', generateRandomSpell);
   
   generateRandomSpell();
+
+const spellInfo = document.querySelector('.spell-info');
+const image = document.querySelector('img');
+
+spellInfo.onmouseenter = () => {
+  image.style.filter = 'brightness(.5)';
+  image.style.transform = 'scale(1.02)';
+};
+
+spellInfo.onmouseleave = () => {
+  image.style.filter = 'brightness(.65)';
+  image.style.transform = 'scale(1)';
+};

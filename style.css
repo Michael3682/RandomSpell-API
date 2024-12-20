@@ -1,55 +1,118 @@
+:root {
+  --text-color: hsl(0, 0%, 90%);
+  --box-shadow: rgba(0, 0, 0, 0.1);
+  --background-color: hsl(0, 0%, 10%);
+  --primary-color: hsl(184, 100%, 50%);
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #f4f4f9;
-    margin: 0;
-  }
-  
-  .spell-container {
-    text-align: center;
+  margin: 0;
+  width: 100vw;
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+
+  img {
     width: 100%;
+    height: 100%;
+    z-index: -99;
+    object-fit: cover;
+    position: absolute;
+    filter: brightness(0.7);
+    transition: all .5s ease-in-out;
+  }
+
+  .spell-container {
+    width: auto;
     max-width: 600px;
-    margin: 0 auto;
+    margin: auto 20px;
+    text-align: center;
+
+    h1 {
+      font-size: 2rem;
+      color: var(--text-color);
+    }
+
+    .spell-info {
+      padding: 20px;
+      position: relative;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px var(--box-shadow);
+      background-color: rgb(26, 25, 25);
+
+      h2 {
+        font-size: 1.5rem;
+        color: var(--text-color);
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: var(--text-color);
+      }
+
+      button {
+        cursor: pointer;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: var(--text-color);
+        transition: all .25s linear;
+        background-color: transparent;
+        border: 1px solid var(--primary-color);
+      }
+
+      button:hover {
+        border: 1px solid transparent;
+        color: var(--background-color);
+        background-color: var(--primary-color);
+      }
+
+      button:active {
+        transform: scale(0.8);
+      }
+      
+    }
+    .spell-info::before,
+    .spell-info::after {
+      content: "";
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      width: 100%;
+      padding: 3px;
+      height: 100%;
+      position: absolute;
+      border-radius: 10px;
+      transform: translate(-50%, -50%);
+      animation: rotate 2s linear infinite;
+      background-image: conic-gradient(from var(--angle), transparent 90%, var(--primary-color));
+    }
+    .spell-info::before {
+      filter: blur(50px);
+    }
+    .spell-info::after {
+      filter: brightness(2);
+    }
   }
-  
-  h1 {
-    font-size: 2rem;
-    color: #333;
-  }
-  
-  .spell-info {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  p {
-    font-size: 1.1rem;
-    color: #555;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2rem;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
+}
