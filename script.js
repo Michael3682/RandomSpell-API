@@ -1,3 +1,14 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then((registration) => {
+        console.log('Service Worker registered with scope:', registration.scope);
+      })
+      .catch((error) => {
+        console.error('Service Worker registration failed:', error);
+      });
+  });
+}
 function generateRandomSpell() {
     fetch('https://hp-api.onrender.com/api/spells')
       .then(response => response.json())
@@ -20,13 +31,3 @@ function generateRandomSpell() {
   document.getElementById('generate-button').addEventListener('click', generateRandomSpell);
   
   generateRandomSpell();
-
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(function(registration) {
-        console.log('Service Worker registered with scope:', registration.scope);
-      })
-      .catch(function(error) {
-        console.log('Service Worker registration failed:', error);
-      });
-  }
