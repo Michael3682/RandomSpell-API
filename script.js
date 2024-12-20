@@ -1,3 +1,10 @@
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+   navigator.serviceWorker.register('service-worker.js').then( () => {
+    console.log('Service Worker Registered')
+   })
+ })
+}
 function generateRandomSpell() {
     fetch('https://hp-api.onrender.com/api/spells')
       .then(response => response.json())
