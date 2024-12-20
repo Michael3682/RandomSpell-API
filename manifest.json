@@ -1,11 +1,11 @@
 {
     "name": "Harry Potter Spell Generator",
     "short_name": "Spell Generator",
-    "description": "Generate random Harry Potter spells with name, incantation, and description.",
+    "description": "Generate random Harry Potter spells with name, and description.",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#f4f4f9",
-    "theme_color": "#007bff",
+    "background_color": "transparent",
+    "theme_color": "transparent",
     "icons": [
         {
             "src": "icons/manifest-icon-192.maskable.png",
