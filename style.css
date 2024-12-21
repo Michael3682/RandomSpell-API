@@ -69,6 +69,7 @@ body {
       p {
         font-size: 1.1rem;
         color: var(--text-color);
+        margin-bottom: 50px;
       }
 
       button {
